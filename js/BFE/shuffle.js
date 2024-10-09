@@ -1,3 +1,11 @@
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: pc
+ * @Date: 2024-10-08 14:12:20
+ * @LastEditors: your name
+ * @LastEditTime: 2024-10-09 19:20:47
+ */
 function shuffle2(arr) {
   let res = [];
   for (let i = 0; i < arr.length - 1; i++) {
@@ -34,5 +42,5 @@ for (let i = 0; i < 1000000; i++) {
 
 // 显示所有可能排列的出现次数
 for (let key in count) {
-  alert(`${key}: ${count[key]}`);
+  console.log(`${key}: ${count[key]}`);
 }
