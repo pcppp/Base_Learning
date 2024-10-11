@@ -1,3 +1,11 @@
+/*
+ * @Descripttion:
+ * @version:
+ * @Author: pc
+ * @Date: 2024-10-10 08:59:40
+ * @LastEditors: your name
+ * @LastEditTime: 2024-10-10 12:57:11
+ */
 function camelize(str) {
   newStr = str.split("-");
   newStr.forEach((item, index, array) => {
@@ -9,6 +17,14 @@ function camelize(str) {
   return newStr.join("");
 }
 console.log(camelize("background-color")); // == 'backgroundColor';
+
+let arrr = [5, 3, 8, 1];
+arrr.forEach((item, index, array) => {
+  item = 3;
+  array[index] = 5;
+  item = 3;
+});
+console.log(arrr.join());
 
 function filterRange(arr, a, b) {
   return arr.filter((item) => {
