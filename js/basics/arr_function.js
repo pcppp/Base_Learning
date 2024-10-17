@@ -4,8 +4,10 @@
  * @Author: pc
  * @Date: 2024-10-10 08:59:40
  * @LastEditors: your name
- * @LastEditTime: 2024-10-10 12:57:11
+ * @LastEditTime: 2024-10-17 14:43:21
  */
+console.log("str".indexOf("t"));
+
 function camelize(str) {
   newStr = str.split("-");
   newStr.forEach((item, index, array) => {
