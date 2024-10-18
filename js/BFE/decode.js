@@ -4,7 +4,7 @@
  * @Author: pc
  * @Date: 2024-10-15 18:03:08
  * @LastEditors: your name
- * @LastEditTime: 2024-10-15 18:55:29
+ * @LastEditTime: 2024-10-18 16:36:46
  */
 // This is a JavaScript coding problem from BFE.dev
 
@@ -19,7 +19,7 @@ function decode(message) {
   let isAllOut = 0;
   console.log("message :>> ", message);
   if (message.length && message[0].length) {
-    wight = message[0].length;
+    wight = message[0].length; 
     high = message.length;
     resMessage.push(message[0][0]);
   } else {
