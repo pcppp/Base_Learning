@@ -3,8 +3,8 @@
  * @version:
  * @Author: pc
  * @Date: 2024-10-17 14:32:19
- * @LastEditors: your name
- * @LastEditTime: 2024-10-18 16:08:30
+ * @LastEditors: pccc 1326278155@qq.com
+ * @LastEditTime: 2024-10-21 18:48:57
  */
 function badparse(str) {
   if (str === "") {
@@ -91,6 +91,8 @@ function parse(json) {
     if (data.length > 0) {
       // 添加最后一对键值对
       arr.push(data.join(""));
+    } else {
+      throw new Error();
     }
     return arr;
   }
@@ -103,7 +105,12 @@ function parse(json) {
       value = [];
     for (let i = 0; i < str.length; i++) {
       // 计数
-      if (str[i] === '"' || str[i] === "'") {
+      if (str[i] === '"') {
+        quotes++;
+      } else if (str[i] === "'") {
+        if (!k_v_Flag) {
+          throw new Error();
+        }
         quotes++;
       }
       if (str[i] === "{" || str[i] === "[") {
@@ -125,9 +132,11 @@ function parse(json) {
         key.push(str[i]);
       }
     }
-    if (key.length > 0 || value.length > 0) {
+    if (key.length > 0 && value.length > 0) {
       // 添加最后一对键值对
       pair.push([key.join("").trim(), value.join("").trim()]);
+    } else {
+      throw new Error();
     }
     return pair;
   }
@@ -151,12 +160,14 @@ function parse(json) {
         res.push(parseInner(element));
       });
       return res;
-    } else if (json[0] === "'" || json[0] === '"') {
+    } else if (json[0] === '"') {
       return json.slice(1, -1);
     } else if (json === "true" || json === "false") {
       return Boolean(json);
     } else if (json === "null") {
       return null;
+    } else if (json[0] === "'") {
+      throw new Error();
     } else {
       return Number(json);
     }
