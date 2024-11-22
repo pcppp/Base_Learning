@@ -13,6 +13,7 @@ function butterMergeSort() {
     else arr[l + r] = right[r++];
   }
 }
+
 function mergeSort(arr) {
   function initArr(arr) {
     return arr.map((item) => [item]);
@@ -48,7 +49,6 @@ function mergeSort(arr) {
     if (index2 !== arr2.length) {
       res.push(...arr2.slice(index2));
     }
-    console.log(res);
 
     return res;
   }
