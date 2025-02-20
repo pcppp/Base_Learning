@@ -24,3 +24,5 @@ console.log("null === undefined", null === undefined);
 console.log("undefined === undefined", undefined === undefined);
 console.log("null === null", null === null);
 console.log("NaN === NaN", NaN === NaN);
+console.log("typeOf obj:",typeof {data:1});
+// console.log("obj===obj",{data:123,base:64} === {data:123,base:64});/
