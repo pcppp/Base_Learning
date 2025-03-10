@@ -32,5 +32,5 @@ const emitter = new EventEmitter();
 const callback1 = (arr) => {
   console.log(arr);
 };
-emitter.subscribe("event1", callback1);
-emitter.emit("event1", 1, 2, 3);
+emitter.subscribe('event1', callback1);
+emitter.emit('event1', 1, 2, 3);

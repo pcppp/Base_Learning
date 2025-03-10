@@ -37,8 +37,15 @@ console.log('----------------------------------------');
 
 // **************************************** 深拷贝 ********************************************
 let deepCopy = JSON.parse(JSON.stringify(obj));
-
+// 不是完美方案->如果对象中有方法或者继承自某个类（带有原型），这些都会丢失
 deepCopy.cObj.a = 999;
 
 console.log('obj->', obj.cObj.a); // 输出: 1（原对象不受影响）
 console.log('deepObj ->', deepCopy.cObj.a); // 输出: 12（深拷贝被修改）
+
+const copy = (obj) => {
+  const keys = Object.keys(obj);
+  const value = Object.values(obj);
+};
+
+// foo.key1 ==> 2

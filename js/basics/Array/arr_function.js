@@ -6,19 +6,19 @@
  * @LastEditors: your name
  * @LastEditTime: 2024-10-17 14:43:21
  */
-console.log("str".indexOf("t"));
+console.log('str'.indexOf('t'));
 
 function camelize(str) {
-  newStr = str.split("-");
+  newStr = str.split('-');
   newStr.forEach((item, index, array) => {
     if (index !== 0) {
       item = item[0].toUpperCase() + item.slice(1);
     }
     array[index] = item;
   });
-  return newStr.join("");
+  return newStr.join('');
 }
-console.log(camelize("background-color")); // == 'backgroundColor';
+console.log(camelize('background-color')); // == 'backgroundColor';
 
 let arrr = [5, 3, 8, 1];
 arrr.forEach((item, index, array) => {
@@ -57,9 +57,22 @@ console.log(arr3); // 8, 5, 2, 1, -10
 function copySorted(arr) {
   return arr.slice().sort();
 }
-let arr = ["HTML", "JavaScript", "CSS"];
+let arr = ['HTML', 'JavaScript', 'CSS'];
 
 let sorted = copySorted(arr);
 
 console.log(sorted); // CSS, HTML, JavaScript
 console.log(arr); // HTML, JavaScript, CSS (no changes)
+
+Array.prototype.myReduce = function (cb, init) {
+  let a = init;
+  this.forEach((data, index, arr) => {
+    a = cb(a, data, index, arr);
+  });
+  return a;
+};
+a = arrr.myReduce((pre, cur, index, arr) => {
+  pre += cur;
+  return pre;
+}, 0);
+console.log('======= a =======\n', a);

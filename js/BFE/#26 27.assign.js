@@ -1,6 +1,6 @@
 function objectAssign(target, ...sources) {
   if (target === null || target === undefined) {
-    throw new Error("Not an object");
+    throw new Error('Not an object');
   }
 
   if (typeof target !== `object`) {
@@ -13,10 +13,10 @@ function objectAssign(target, ...sources) {
       continue;
     }
     for (item in source) {
-      console.log("item", item, source[item]);
+      console.log('item', item, source[item]);
     }
     Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-
+    console.log('------------------------------>', Object.getOwnPropertyDescriptors(source));
     for (const symbol of Object.getOwnPropertySymbols(source)) {
       target[symbol] = source[symbol];
     }
@@ -24,12 +24,12 @@ function objectAssign(target, ...sources) {
   return target;
 }
 let source = {
-  [Symbol(1)]: "pc",
+  [Symbol(1)]: 'pc',
   b: 3,
 };
 let target1 = {},
   target2 = {};
 objectAssign(target1, source);
 Object.assign(target2, source);
-console.log("target1 :>> ", target1);
-console.log("target2 :>> ", target2);
+console.log('target1 :>> ', target1);
+console.log('target2 :>> ', target2);

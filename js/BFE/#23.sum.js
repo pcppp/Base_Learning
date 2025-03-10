@@ -14,3 +14,4 @@ function sum(num) {
   return cSum;
 }
 const sum1 = sum(1);
+console.log(sum1 == 1);
