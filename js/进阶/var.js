@@ -23,5 +23,13 @@ Array.prototype.myFilter = function () {
   console.log(this);
 };
 
-const foo = [1, 2, 3];
+// const foo = [1, 2, 3];
 // foo.myFilter();
+let obj = { a: 1 };
+function foo(obj) {
+  obj.a = 2;
+  obj = {};
+  obj.a = 3;
+}
+foo(obj);
+console.log('======= obj =======\n', obj.a);
