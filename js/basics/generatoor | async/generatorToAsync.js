@@ -35,26 +35,29 @@ function* myGenerator() {
 function GeneratorToAsync(func) {
   return function () {
     const gen = func();
-    return new Promise((resolve, reject) => {
-      function step(key, arg) {
-        let res;
+    function step(key, arg) {
+      return new Promise((resolve, reject) => {
         try {
-          res = gen[key](arg);
+          let res = gen[key](arg);
           const { value, done } = res;
           if (done) {
             return resolve(value);
           } else {
             return Promise.resolve(value).then(
-              (val) => step('next', val),
-              (err) => step('throw', err)
+              (resolve) => {
+                step('next', resolve);
+              },
+              (reject) => {
+                step('throw', reject);
+              }
             );
           }
         } catch (error) {
-          return reject(error);
+          reject(error);
         }
-      }
-      step('next');
-    });
+      });
+    }
+    step('next');
   };
 }
 

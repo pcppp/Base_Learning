@@ -36,7 +36,6 @@ function asyncToGenerator(func) {
   //TODO
 }
 
-// 目标:
 const asyncFunc = asyncToGenerator(myGenerator);
 
 // 执行异步函数
