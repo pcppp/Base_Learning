@@ -1,44 +1,39 @@
-/*
-假设我们有一个异步操作：
-function getData() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("Hello Async");
-    }, 1000);
-  });
-}
-编写一个 asyncToGenerator 生成器转换async函数 来模拟 async/await 的逻辑：
-function* myGenerator() {
-  const data = yield getData(); 
-  console.log(data); // "Hello Async"
-  return "Done";
-}
+// function game(name) {
+//   this.name = name;
+//   this.skin = [1, 2, 3];
+// }
 
-其中*代表async,yield代表await
+// game.prototype.getName = function () {
+//   return this.name;
+// };
+// game.prototype.getSkin = function () {
+//   return this.skin;
+// };
 
-使用 asyncToGenerator 将生成器函数转换为异步函数：
-const asyncFunc = asyncToGenerator(myGenerator);
-*/
-function getData() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve('Hello Async');
-    }, 1000);
-  });
-}
-function* myGenerator() {
-  const data = yield getData();
-  console.log(data); // "Hello Async"
-  return 'Done';
-}
+// game.prototype.setName = function (name) {
+//   this.name = name;
+// };
+// game.prototype.setSkin = function (skin) {
+//   this.skin.push(skin);
+// };
 
-function asyncToGenerator(func) {
-  //TODO
-}
+// function lol(name) {
+//   game.call(this, name);
+// }
+// // lol.prototype = game;
+// lol.prototype = Object.create(game.prototype);
+// lol.prototype.constructor = lol;
 
-const asyncFunc = asyncToGenerator(myGenerator);
+// const pc = new lol('pc');
 
-// 执行异步函数
-asyncFunc().then((result) => {
-  console.log(result); // "Done"
-});
+// console.log(pc.skin);
+// pc.setSkin('sss');
+// console.log(pc.skin);
+
+// const a = [, ,];
+const b = [undefined, undefined, undefined];
+
+// console.log(Object.keys(a));
+console.log(Object.keys(b));
+const a = Array(Number.MAX_SAFE_INTEGER).fill(Symbol(' '));
+a.forEach((item) => {});
