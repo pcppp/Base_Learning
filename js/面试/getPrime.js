@@ -1,7 +1,7 @@
 /* 质数:
 大于 1 的自然数中，除了 1 和它本身以外，不能被其他任何自然数整除的数
 */
-const getPrime = (() => {
+const a = (() => {
   let currentPrime = 1;
 
   return function () {

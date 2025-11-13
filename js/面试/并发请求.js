@@ -1,23 +1,39 @@
 function concurRequest(urls, maxCount) {
   return new Promise((resolve) => {
-    const currentCount = 0;
-    const concurPromise = new Promise((resolve, rej) => {
-      const res = [];
-      let i = 0;
-      async function request() {
-        try {
-          currentCount++;
-          const data = await fetch(urls[i]);
-          res[i] = data;
-        } catch (err) {
-          res[i] = err;
-        } finally {
-          i++;
-          currentCount--;
-          request();
+    if (urls.length === 0) {
+      resolve([]);
+      return;
+    }
+
+    let index = 0;
+    let finishedCount = 0;
+    const res = [];
+
+    const createTask = async () => {
+      if (index >= urls.length) return;
+
+      const currentIndex = index;
+      const url = urls[index];
+      index++;
+
+      try {
+        const data = await fetch(url);
+        res[currentIndex] = data;
+      } catch (err) {
+        res[currentIndex] = err;
+      } finally {
+        finishedCount++;
+        if (finishedCount === urls.length) {
+          resolve(res);
+        } else {
+          createTask();
         }
       }
-      new Promise();
-    });
+    };
+
+    const max = Math.min(urls.length, maxCount);
+    for (let i = 0; i < max; i++) {
+      createTask();
+    }
   });
 }
