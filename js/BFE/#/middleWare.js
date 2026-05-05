@@ -21,7 +21,7 @@ class Middleware {
     let idx = 0;
     let errIdx = 0;
     let self = this;
-    function next(nextError) {
+    function next() {
       let args = [req, next];
       let func;
       if (nextError) {
